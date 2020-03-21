@@ -1,15 +1,12 @@
 package guru.springframework.spring5webapp.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
@@ -20,4 +17,11 @@ public class Publisher {
     private Long id;
     private String name;
     private Address address;
+    @OneToMany
+    private Set<Book> books = new HashSet<>();
+
+    public Publisher(String name, Address address) {
+        this.name = name;
+        this.address = address;
+    }
 }
