@@ -18,6 +18,7 @@ public class Publisher {
     private String name;
     private Address address;
     @OneToMany
+    @JoinColumn(name = "publisher_id")
     private Set<Book> books = new HashSet<>();
 
     public Publisher(String name, Address address) {
